@@ -103,6 +103,13 @@ class AddressBook {
         this.listOffAllGroups = [
             // list wszystkich grup
         ];
+        
+        // - list of contacts in groups
+        this.listOffAllContactsInGroups = [
+            // user_uuid
+            // group_uuid
+        ];
+        
     }
     addContactsToListOffContacts = (...contacts) => {
         contacts.forEach(contact => {
@@ -113,6 +120,10 @@ class AddressBook {
         })
         return this.listOffAllContacts;
     }
+    
+    //addContactsToGroup = ([_params_]) =>{
+    //    
+    //}
 
 
     addGroupToListOfGroups = (...nameGroup) => {
@@ -133,9 +144,9 @@ class AddressBook {
             return true // false
         }
     }
-    addContactToGroup = () => {
-
-    }
+//     to remove: addContactToGroup = () => {
+//
+//     }
 }
 
 
@@ -216,34 +227,35 @@ class GroupContact {
         Validator.isEmptyString(nameGroup);
         return this.name = nameGroup;
     }
-    addContact = (contact) => {
-        if (!Validator.isContact(contact)) return false
-        this.listOfContacts.push(contact)
-        return this.listOfContacts;
-    }
+//  to remove:   addContact = (contact) => {
+//         if (!Validator.isContact(contact)) return false
+//         this.listOfContacts.push(contact)
+//         return this.listOfContacts;
+//     }
 
-    addContacts = (...contacts) => {
-        contacts.forEach(contact => {
-            if (!Validator.isContact(contact)) {
-                return false;
-            }
-            this.listOfContacts.push(contact);
-        })
-        return this.listOfContacts;
-    }
-    deleteContact = (uuid) => {
-        this.isEmptyString(uuid);
+//   to remove:  addContacts = (...contacts) => {
+//         contacts.forEach(contact => {
+//             if (!Validator.isContact(contact)) {
+//                 return false;
+//             }
+//             this.listOfContacts.push(contact);
+//         })
+//         return this.listOfContacts;
+//     }
+    
+//    to remove:  deleteContact = (uuid) => {
+//         this.isEmptyString(uuid);
 
-        const contact = this.listOfContacts.find((contactItem) => contactItem.uuid === uuid)
-        if (this.listOfContacts.includes(contact)) {
-            const contacts = this.listOfContacts.filter((contactItem) => {
-                contactItem.uuid !== contact.uuid
-            })
-            this.listOfContacts = contacts
-        } else {
-            return `args not found`
-        }
-    }
+//         const contact = this.listOfContacts.find((contactItem) => contactItem.uuid === uuid)
+//         if (this.listOfContacts.includes(contact)) {
+//             const contacts = this.listOfContacts.filter((contactItem) => {
+//                 contactItem.uuid !== contact.uuid
+//             })
+//             this.listOfContacts = contacts
+//         } else {
+//             return `args not found`
+//         }
+//     }
 }
 
 
@@ -270,6 +282,9 @@ adressBook.addContact(contact1) // 1
 adressBook.addContact(contact2) // 2
 adressBook.addContact(contact3) // 3
 adressBook.addContact(contact4) // 4
+
+// to add:
+// addressBook.addContactsToGroups({contact1.uuid, groupContact.uuid}, {contact2.uuid, groupFriends.uuid})
 
 // const newGroupContact = new GroupContact('Znajomi')
 // newGroupContact.addContact(new Contact('jarek', 'ka', 'jarek.ka@gmail.com'))
